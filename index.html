@@ -13,7 +13,6 @@
             --accent-color: #6c63ff;
             --border-color: #ddd;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --font-family: 'Nunito', sans-serif;
         }
 
         body {
@@ -185,42 +184,46 @@
         .navigation {
             display: flex;
             flex-direction: column;
-            /* Stack items vertically */
             align-items: center;
             /* Center items horizontally */
             margin-top: 20px;
             margin-bottom: 30px;
-            background-color: rgba(255, 255, 255, 0.6);
-            border-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            /* Rounded corners for the entire navigation */
+            padding: 20px;
+            /* Add padding around the buttons */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(240, 248, 255, 0.7);
+            /* Light background color */
         }
 
         .nav-button {
-            background-color: rgba(108, 99, 255, 0.2);
-            color: var(--accent-color);
-            border: 1px solid var(--border-color);
-            padding: 15px 30px;
-            /* Increased padding for bigger buttons */
-            margin: 5px;
-            border-radius: 10px;
+            background-color: rgba(220, 220, 220, 0.5);
+            /* Very light gray/lavender */
+            color: #333;
+            /* Dark text color */
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            /* Vertical margin only */
+            border-radius: 25px;
+            /* Rounded corners for the buttons */
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             display: block;
-            /* Make buttons full-width within the navigation */
-            width: 100%;
-            /* Ensure buttons take up the full width */
+            width: 80%;
+            /* Reduced width, adjust as needed */
             text-align: center;
-            /* Center the text within the button */
-            font-size: 1.2em;
-            /* Increased font size for bigger text */
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button:hover {
-            background-color: var(--accent-color);
-            color: var(--secondary-bg);
+            background-color: rgba(108, 99, 255, 0.2);
+            /* Light purple on hover */
+            color: var(--accent-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .section {
@@ -333,6 +336,7 @@
             <button type="submit">Send Message</button>
         </form>
     </section>
+
     <div class="social-icons">
         <a href="https://www.facebook.com" target="_blank">
             <img src="facebook_logo.png" alt="Facebook">
