@@ -119,6 +119,7 @@
         }
 
         @media (max-width: 768px) {
+
             h1 {
                 font-size: 2em;
             }
@@ -151,6 +152,7 @@
             background-size: 400% 400%;
             animation: subtleBackgroundShift 30s ease infinite;
         }
+
         .social-icons {
             text-align: center;
             margin-top: 20px;
@@ -179,12 +181,15 @@
             box-shadow: none;
             border-radius: 50%;
         }
+
         .navigation {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            /* Stack items vertically */
+            align-items: center;
+            /* Center items horizontally */
             margin-top: 20px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 10px;
             padding: 10px;
@@ -196,19 +201,28 @@
             background-color: rgba(108, 99, 255, 0.2);
             color: var(--accent-color);
             border: 1px solid var(--border-color);
-            padding: 10px 20px;
+            padding: 15px 30px;
+            /* Increased padding for bigger buttons */
             margin: 5px;
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            display: block;
+            /* Make buttons full-width within the navigation */
+            width: 100%;
+            /* Ensure buttons take up the full width */
+            text-align: center;
+            /* Center the text within the button */
+            font-size: 1.2em;
+            /* Increased font size for bigger text */
         }
 
         .nav-button:hover {
             background-color: var(--accent-color);
             color: var(--secondary-bg);
         }
+
         .section {
             display: none;
         }
@@ -231,8 +245,9 @@
     </div>
     <section id="about" class="section">
         <h2>ABOUT ME</h2>
-        <p>Driven BSIT student with a strong foundation in IT principles and a thirst for continuous learning. Excited to explore new technologies and apply my skills to impactful projects. My primary goal is to successfully complete my degree, which I see as the
-            foundation for a more promising future.</p>
+        <p>Driven BSIT student with a strong foundation in IT principles and a thirst for continuous learning. Excited to
+            explore new technologies and apply my skills to impactful projects. My primary goal is to successfully
+            complete my degree, which I see as the foundation for a more promising future.</p>
     </section>
     <section id="projects" class="section">
         <h2>Just sharing some shots of my project.</h2>
@@ -318,16 +333,14 @@
             <button type="submit">Send Message</button>
         </form>
     </section>
-
     <div class="social-icons">
-        <a href="https://www.facebook.com/share/1KAsXHrEqY/" target="_blank">
+        <a href="https://www.facebook.com" target="_blank">
             <img src="facebook_logo.png" alt="Facebook">
         </a>
-        <a href="https://www.instagram.com/iloveavokeydo_?igsh=MXZhaHhrZXQ2dGlzeg==" target="_blank">
+        <a href="https://www.instagram.com" target="_blank">
             <img src="instagram_logo.png" alt="Instagram">
         </a>
     </div>
-
     <script>
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
