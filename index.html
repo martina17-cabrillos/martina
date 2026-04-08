@@ -171,15 +171,17 @@
         <a href="#" class="nav-button" onclick="showSection('projects')">Photos</a>
         <a href="#" class="nav-button" onclick="showSection('videos')">Videos</a>
         <a href="#" class="nav-button" onclick="showSection('outputs')">My Outputs</a>
+        <a href="#" class="nav-button" onclick="showSection('resume')">Resume</a>
         <a href="#" class="nav-button" onclick="showSection('contact')">Contact</a>
     </div>
 
-    <!-- DEFAULT ACTIVE -->
+    <!-- ABOUT -->
     <section id="about" class="section active">
         <h2>ABOUT ME</h2>
         <p>Driven BSIT student passionate about technology and continuous learning.</p>
     </section>
 
+    <!-- PHOTOS -->
     <section id="projects" class="section">
         <h2>Photos</h2>
         <img src="1.jpg" width="100">
@@ -187,6 +189,7 @@
         <img src="mm.jpg" width="100">
     </section>
 
+    <!-- VIDEOS -->
     <section id="videos" class="section">
         <h2>Videos</h2>
         <video src="vid1.mp4" width="100" controls></video>
@@ -194,7 +197,7 @@
         <video src="ok.mp4" width="100" controls></video>
     </section>
 
-    <!-- ✅ YOUR LINKS HERE -->
+    <!-- OUTPUTS -->
     <section id="outputs" class="section outputs">
         <h2>MY OUTPUTS</h2>
         <p>Check out my projects:</p>
@@ -204,6 +207,19 @@
         <a href="https://www.figma.com/proto/https://www.figma.com/proto/fWhR3tvJ9GTe99Xhn3Xat5/Untitled?t=W9pz9ZZx6QYbAz4T-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=120-440&starting-point-node-id=1%3A2" target="_blank">E-commerce Website</a>
     </section>
 
+    <!-- RESUME -->
+    <section id="resume" class="section">
+        <h2>MY RESUME</h2>
+        <p>You can view or download my resume below:</p>
+
+        <iframe src="resume.pdf" width="80%" height="400px"></iframe>
+
+        <a href="resume.pdf" download>
+            <button>Download Resume</button>
+        </a>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" class="section">
         <h2>CONTACT ME</h2>
         <form onsubmit="event.preventDefault(); alert('Message sent!');">
@@ -212,6 +228,7 @@
         </form>
     </section>
 
+    <!-- SOCIAL -->
     <div class="social-icons">
         <a href="https://facebook.com"><img src="facebook_logo.png"></a>
         <a href="https://instagram.com"><img src="instagram_logo.png"></a>
