@@ -1,235 +1,424 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martina's Portfolio</title>
-
     <style>
+        /* Import Google Fonts for better typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
         :root {
-            --primary-bg: #f8f8ff;
-            --secondary-bg: #fff;
-            --primary-text: #333;
-            --accent-color: #6c63ff;
-            --border-color: #ddd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --font-family: 'Segoe UI', Arial, sans-serif;
+            --primary-bg: #f7f9fc;
+            --secondary-bg: #ffffff;
+            --primary-text: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --accent-color: #4a90e2;
+            --accent-hover: #357abd;
+            --border-color: #e1e8ed;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
+            background-color: var(--primary-bg);
+            font-family: 'Poppins', sans-serif;
             color: var(--primary-text);
-            background: linear-gradient(270deg, #f0f8ff, #e6e6fa);
-            background-size: 400% 400%;
-            animation: subtleBackgroundShift 30s ease infinite;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2 {
+        /* Animated Background */
+        body {
+            background: linear-gradient(135deg, #f7f9fc 0%, #eef2f5 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
             text-align: center;
-            color: var(--accent-color);
+            padding: 40px 0 20px;
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-top: 30px;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--primary-text);
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: var(--accent-color);
         }
 
         h2 {
             font-size: 1.8em;
+            color: var(--primary-text);
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
         }
 
-        p {
-            text-align: center;
-        }
-
-        img, video {
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 8px var(--shadow-color);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            max-width: 100%;
-        }
-
-        img:hover, video:hover {
-            transform: scale(1.2);
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #574fd6;
-        }
-
-        textarea {
-            border-radius: 8px;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            width: 90%;
-            max-width: 400px;
-            display: block;
-            margin: 10px auto;
-        }
-
-        button {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: block;
-            margin: 10px auto;
-        }
-
-        button:hover {
-            background-color: #574fd6;
-        }
-
+        /* Navigation */
         .navigation {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-            padding: 20px;
-            background: rgba(240, 248, 255, 0.7);
-            border-radius: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px auto;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background-color: var(--secondary-bg);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            max-width: fit-content;
         }
 
         .nav-button {
-            margin: 5px;
+            background-color: transparent;
+            color: var(--primary-text);
+            border: none;
             padding: 10px 20px;
-            border-radius: 25px;
-            background: #ddd;
-            width: 80%;
-            text-align: center;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
-        .nav-button:hover {
-            background: rgba(108, 99, 255, 0.2);
+        .nav-button:hover, .nav-button.active {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+        }
+
+        /* Content Sections */
+        .content-area {
+            background-color: var(--secondary-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            margin-bottom: 30px;
+            min-height: 400px;
         }
 
         .section {
             display: none;
-            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .section.active {
             display: block;
         }
 
-        .outputs a {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Text Styles */
+        #about p {
+            font-size: 1.1em;
+            color: var(--secondary-text);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Gallery Layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 25px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .item-card {
+            text-align: center;
+        }
+
+        .media-wrapper {
+            background-color: var(--primary-bg);
+            border-radius: 12px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .media-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+        }
+
+        img, video {
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .item-label {
+            margin-top: 12px;
+            font-weight: 500;
+            color: var(--primary-text);
+            font-size: 0.95em;
+        }
+
+        /* Outputs Section */
+        #outputs {
+            text-align: center;
+        }
+        #outputs p {
+            margin-bottom: 25px;
+            color: var(--secondary-text);
+        }
+        .output-link {
             display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
+            margin: 10px 15px;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white !important;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+        }
+        .output-link:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        /* Contact Form */
+        #contact {
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 1em;
+            color: var(--primary-text);
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            background-color: #fafbfc;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        button[type="submit"] {
             background-color: var(--accent-color);
             color: white;
-            border-radius: 8px;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            font-family: inherit;
+        }
+        button[type="submit"]:hover {
+            background-color: var(--accent-hover);
         }
 
-        .outputs a:hover {
-            background-color: #574fd6;
-        }
-
+        /* Social Icons */
         .social-icons {
             text-align: center;
             margin-top: 20px;
         }
-
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            margin: 0 10px;
+            background-color: var(--secondary-bg);
+            border-radius: 50%;
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: transform 0.3s ease;
+            padding: 8px;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
         .social-icons img {
-            width: 30px;
-            margin: 5px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        @keyframes subtleBackgroundShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            .content-area {
+                padding: 25px;
+            }
+            .navigation {
+                border-radius: 16px;
+                padding: 10px;
+            }
+            .nav-button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
-
 <body>
+    <div class="container">
+        <header>
+            <h1>Martina<span>'s</span> Portfolio</h1>
+        </header>
 
-    <h1>Martina's Portfolio</h1>
+        <nav class="navigation">
+            <button class="nav-button active" onclick="showSection('about')">About me</button>
+            <button class="nav-button" onclick="showSection('projects')">Photos</button>
+            <button class="nav-button" onclick="showSection('videos')">Videos</button>
+            <button class="nav-button" onclick="showSection('outputs')">My Outputs</button>
+            <button class="nav-button" onclick="showSection('contact')">Contact</button>
+        </nav>
 
-    <div class="navigation">
-        <a href="#" class="nav-button" onclick="showSection('about')">About Me</a>
-        <a href="#" class="nav-button" onclick="showSection('projects')">Photos</a>
-        <a href="#" class="nav-button" onclick="showSection('videos')">Videos</a>
-        <a href="#" class="nav-button" onclick="showSection('outputs')">My Outputs</a>
+        <main class="content-area">
+            <section id="about" class="section active">
+                <h2>ABOUT ME</h2>
+                <p>Driven BSIT student with a strong foundation in IT principles and a thirst for continuous learning. Excited to explore new technologies and apply my skills to impactful projects. My primary goal is to successfully complete my degree, which I see as the foundation for a more promising future.</p>
+            </section>
 
-        <!-- ✅ ADDED RESUME TAB -->
-        <a href="#" class="nav-button" onclick="showSection('resume')">Resume</a>
+            <section id="projects" class="section">
+                <h2>PROJECTS</h2>
+                <div class="gallery-grid">
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="1.jpg" target="_blank">
+                                <img src="1.jpg" alt="Avocado Design">
+                            </a>
+                        </div>
+                        <div class="item-label">AVOCADO</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="2.jpg" target="_blank">
+                                <img src="2.jpg" alt="T-Shirt Design">
+                            </a>
+                        </div>
+                        <div class="item-label">T-SHIRT</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="mm.jpg" target="_blank">
+                                <img src="mm.jpg" alt="Chessboard Project">
+                            </a>
+                        </div>
+                        <div class="item-label">CHESSBOARD</div>
+                    </div>
+                </div>
+            </section>
 
-        <a href="#" class="nav-button" onclick="showSection('contact')">Contact</a>
-    </div>
+            <section id="videos" class="section">
+                <h2>FAVORITE VIDEOS</h2>
+                <div class="gallery-grid">
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="vid1.mp4" target="_blank">
+                                <video src="vid1.mp4" controls muted loop></video>
+                            </a>
+                        </div>
+                        <div class="item-label">Classmates</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="vid2.mp4" target="_blank">
+                                <video src="vid2.mp4" controls muted loop></video>
+                            </a>
+                        </div>
+                        <div class="item-label">Lyric Video</div>
+                    </div>
+                    <div class="item-card">
+                        <div class="media-wrapper">
+                            <a href="ok.mp4" target="_blank">
+                                <video src="ok.mp4" controls muted loop></video>
+                            </a>
+                        </div>
+                        <div class="item-label">Nature</div>
+                    </div>
+                </div>
+            </section>
 
-    <section id="about" class="section active">
-        <h2>ABOUT ME</h2>
-        <p>Driven BSIT student passionate about technology and continuous learning.</p>
-    </section>
+            <section id="outputs" class="section">
+                <h2>MY OUTPUTS</h2>
+                <p>Here is a collection of my work and design projects:</p>
+                <a href="" target="_blank" class="output-link">Canva Portfolio</a>
+                <a href="" target="_blank" class="output-link">Figma Portfolio</a>
+                <a href="" target="_blank" class="output-link">E-commerce Website</a>
+            </section>
 
-    <section id="projects" class="section">
-        <h2>Photos</h2>
-        <img src="1.jpg" width="100">
-        <img src="2.jpg" width="100">
-        <img src="mm.jpg" width="100">
-    </section>
+            <section id="contact" class="section">
+                <h2>CONTACT ME</h2>
+                <form>
+                    <label for="comments" style="display:none;">Message:</label>
+                    <textarea id="comments" name="comments" rows="5" placeholder="Let me know your thoughts!"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </main>
 
-    <section id="videos" class="section">
-        <h2>Videos</h2>
-        <video src="vid1.mp4" width="100" controls></video>
-        <video src="vid2.mp4" width="100" controls></video>
-        <video src="ok.mp4" width="100" controls></video>
-    </section>
-
-    <section id="outputs" class="section outputs">
-        <h2>MY OUTPUTS</h2>
-        <p>Check out my projects:</p>
-
-        <a href="https://www.canva.com/design/https://canva.link/9nxjh7402hw7aqyK" target="_blank">Canva Portfolio</a>
-        <a href="https://www.figma.com/file/https://www.figma.com/proto/aCOVtrCv2NjKomBjAAF8Re/Untitled?node-id=1-2&starting-point-node-id=1%3A2&t=smGb6RqvUKlfcsXu-1" target="_blank">Figma Portfolio</a>
-        <a href="https://www.figma.com/proto/https://www.figma.com/proto/fWhR3tvJ9GTe99Xhn3Xat5/Untitled?t=W9pz9ZZx6QYbAz4T-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=120-440&starting-point-node-id=1%3A2" target="_blank">E-commerce Website</a>
-    </section>
-
-    <!-- ✅ ADDED RESUME SECTION -->
-    <section id="resume" class="section">
-        <h2>MY RESUME</h2>
-        <p>You can view or download my resume below:</p>
-
-        <iframe src="resume.pdf" width="80%" height="400px"></iframe>
-
-        <a href="resume.pdf" download>
-            <button>Download Resume</button>
-        </a>
-    </section>
-
-    <section id="contact" class="section">
-        <h2>CONTACT ME</h2>
-        <form onsubmit="event.preventDefault(); alert('Message sent!');">
-            <textarea placeholder="Your message..."></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-
-    <div class="social-icons">
-        <a href="https://facebook.com"><img src="facebook_logo.png"></a>
-        <a href="https://instagram.com"><img src="instagram_logo.png"></a>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" alt="Instagram">
+                </a>
+            </div>
+        </footer>
     </div>
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update active button state
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
         }
     </script>
-
 </body>
-
 </html>
